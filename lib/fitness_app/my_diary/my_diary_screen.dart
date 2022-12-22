@@ -80,37 +80,14 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
         animationController: widget.animationController,
       ),
     );
-    // listViews.add(
-    //   TitleView(
-    //     titleTxt: 'Meals today',
-    //     subTxt: 'Customize',
-    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-    //         parent: widget.animationController,
-    //         curve:
-    //             Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
-    //     animationController: widget.animationController,
-    //   ),
-    // );
-
-    // listViews.add(
-    //   MealsListView(
-    //     mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
-    //         CurvedAnimation(
-    //             parent: widget.animationController,
-    //             curve: Interval((1 / count) * 3, 1.0,
-    //                 curve: Curves.fastOutSlowIn))),
-    //     mainScreenAnimationController: widget.animationController,
-    //   ),
-    // );
-
     listViews.add(
       TitleView(
-        titleTxt: 'Pengecekan Harian',
-        subTxt: 'Today',
+        titleTxt: 'Data Scanner',
+        subTxt: 'Customize',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:
-                Interval((1 / count) * 4, 1.0, curve: Curves.fastOutSlowIn))),
+                Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController,
       ),
     );
@@ -124,6 +101,28 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
         animationController: widget.animationController,
       ),
     );
+
+    // listViews.add(
+    //   TitleView(
+    //     titleTxt: 'Pengecekan Harian',
+    //     subTxt: 'Today',
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    //         parent: widget.animationController,
+    //         curve:
+    //             Interval((1 / count) * 4, 1.0, curve: Curves.fastOutSlowIn))),
+    //     animationController: widget.animationController,
+    //   ),
+    // );
+
+    // listViews.add(
+    //   BodyMeasurementView(
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    //         parent: widget.animationController,
+    //         curve:
+    //             Interval((1 / count) * 5, 1.0, curve: Curves.fastOutSlowIn))),
+    //     animationController: widget.animationController,
+    //   ),
+    // );
     listViews.add(
       TitleView(
         titleTxt: 'Isi Tabung',

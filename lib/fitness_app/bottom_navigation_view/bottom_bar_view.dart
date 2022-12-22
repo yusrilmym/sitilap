@@ -169,8 +169,8 @@ class _BottomBarViewState extends State<BottomBarView>
                           splashColor: Colors.white.withOpacity(0.1),
                           highlightColor: Colors.transparent,
                           focusColor: Colors.transparent,
-                          onTap: widget.addClick,
-                          // onTap: () => scanQRCode(),
+                          // onTap: widget.addClick,
+                          onTap: () => scanQRCode(),
 
                           child: Icon(
                             Icons.add,
@@ -202,24 +202,24 @@ class _BottomBarViewState extends State<BottomBarView>
     });
   }
 
-  // Future<void> scanQRCode() async {
-  //   try {
-  //     final qrCode = await FlutterBarcodeScanner.scanBarcode(
-  //       '#ff6666',
-  //       'Cancel',
-  //       true,
-  //       ScanMode.QR,
-  //     );
+  Future<void> scanQRCode() async {
+    try {
+      final qrCode = await FlutterBarcodeScanner.scanBarcode(
+        '#ff6666',
+        'Cancel',
+        true,
+        ScanMode.QR,
+      );
 
-  //     if (!mounted) return;
+      if (!mounted) return;
 
-  //     setState(() {
-  //       this.qrCode = qrCode;
-  //     });
-  //   } on PlatformException {
-  //     qrCode = 'Failed to get platform version.';
-  //   }
-  // }
+      setState(() {
+        this.qrCode = qrCode;
+      });
+    } on PlatformException {
+      qrCode = 'Failed to get platform version.';
+    }
+  }
 }
 
 class TabIcons extends StatefulWidget {
