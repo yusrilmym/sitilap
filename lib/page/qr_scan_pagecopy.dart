@@ -56,103 +56,74 @@ class _QRScanPageCopState extends State<QRScanPageCop> {
           backgroundColor: Colors.green,
         ),
         body: Center(
-          child: _get.length != 0
-              ? MasonryGridView.count(
-                  crossAxisCount: 1,
-                  itemCount: _get.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Edit(
-                                      id: _get[index]['id'],
-                                    )));
-                      },
-                      child: Container(
-                        padding: EdgeInsets.all(15),
-                        child: Column(
+          child: ListView.builder(
+              itemCount: _get == null ? 0 : _get.length,
+              itemBuilder: (BuildContext context, index) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    if (list.asMap().containsKey(int.parse(qrCode))) ...[
+                      if (qrCode == _get[index]['nomer_apar']) ...[
+                        Column(
                           children: [
-                            if (list
-                                .asMap()
-                                .containsKey(int.parse(qrCode))) ...[
-                              if (qrCode == _get[index]['nomer_apar']) ...[
-                                Column(
-                                  children: [
-                                    Text(
-                                      'DICOBA $qrCode',
-                                      style: TextStyle(
-                                        fontSize: 28,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    DataTable(
-                                      columns: [
-                                        DataColumn(
-                                            label: Text('Keterangan',
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    fontWeight:
-                                                        FontWeight.bold))),
-                                        DataColumn(
-                                            label: Text('Detail',
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    fontWeight:
-                                                        FontWeight.bold))),
-                                      ],
-                                      rows: [
-                                        DataRow(cells: [
-                                          DataCell(Text('NAMA RUANGAN')),
-                                          DataCell(Text(
-                                              '${_get[index]['nama_ruangan']}')),
-                                        ]),
-                                        DataRow(cells: [
-                                          DataCell(Text('JENIS APAR')),
-                                          DataCell(Text(
-                                              '${_get[index]['jenis_apar']}')),
-                                        ]),
-                                        DataRow(cells: [
-                                          DataCell(Text('SATUAN (KG)')),
-                                          DataCell(
-                                              Text('${_get[index]['satuan']}')),
-                                        ]),
-                                        DataRow(cells: [
-                                          DataCell(Text('PENGISIAN AWAL')),
-                                          DataCell(Text(
-                                              '${_get[index]['pengisian_awal']}')),
-                                        ]),
-                                        DataRow(cells: [
-                                          DataCell(Text('PENGISIAN AKHIR')),
-                                          DataCell(Text(
-                                              '${_get[index]['pengisian_akhir']}')),
-                                        ]),
-                                      ],
-                                    ),
-                                    ButtonWidget(
-                                      text: 'Start QR scan',
-                                      onClicked: () => scanQRCode(),
-                                    ),
-                                  ],
-                                ),
+                            Text(
+                              'Kode Tabung $qrCode',
+                              style: TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            DataTable(
+                              columns: [
+                                DataColumn(
+                                    label: Text('Keterangan',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold))),
+                                DataColumn(
+                                    label: Text('Detail',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold))),
                               ],
-                            ],
+                              rows: [
+                                DataRow(cells: [
+                                  DataCell(Text('NAMA RUANGAN')),
+                                  DataCell(
+                                      Text('${_get[index]['nama_ruangan']}')),
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Text('JENIS APAR')),
+                                  DataCell(
+                                      Text('${_get[index]['jenis_apar']}')),
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Text('SATUAN (KG)')),
+                                  DataCell(Text('${_get[index]['satuan']}')),
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Text('PENGISIAN AWAL')),
+                                  DataCell(
+                                      Text('${_get[index]['pengisian_awal']}')),
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Text('PENGISIAN AKHIR')),
+                                  DataCell(Text(
+                                      '${_get[index]['pengisian_akhir']}')),
+                                ]),
+                              ],
+                            ),
+                            ButtonWidget(
+                              text: 'Start QR scan',
+                              onClicked: () => scanQRCode(),
+                            ),
                           ],
                         ),
-                      ),
-                    );
-                  },
-                )
-              : Center(
-                  child: Text(
-                    "No Data Available",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+                      ],
+                    ],
+                  ],
+                );
+              }),
         ),
       );
 
