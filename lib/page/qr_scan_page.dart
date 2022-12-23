@@ -16,7 +16,7 @@ class QRScanPage extends StatefulWidget {
 
 class _QRScanPageState extends State<QRScanPage> {
   var list = [for (var i = 0; i < 250; i += 1) i];
-  var qrCode = '201';
+  var qrCode = '4';
   // var c = int.tryParse('qrCode');
   List _get = [];
 
