@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:qr_code_scanner/fitness_app/training/training_screen.dart';
 import 'package:qr_code_scanner/page/qr_scan_page.dart';
+import 'package:qr_code_scanner/page/qr_scan_pagecopy.dart';
 
 import '../../main.dart';
 import '../fitness_app_theme.dart';
@@ -26,7 +27,6 @@ class BottomBarView extends StatefulWidget {
 class _BottomBarViewState extends State<BottomBarView>
     with TickerProviderStateMixin {
   AnimationController animationController;
-  var qrCode = '201';
   @override
   void initState() {
     animationController = AnimationController(
@@ -170,7 +170,10 @@ class _BottomBarViewState extends State<BottomBarView>
                           highlightColor: Colors.transparent,
                           focusColor: Colors.transparent,
                           // onTap: widget.addClick,
-                          onTap: () => scanQRCode(),
+                          onTap: () =>
+                              Navigator.of(context).push(MaterialPageRoute(
+                            builder: (BuildContext context) => QRScanPageCop(),
+                          )),
 
                           child: Icon(
                             Icons.add,
@@ -200,25 +203,6 @@ class _BottomBarViewState extends State<BottomBarView>
         }
       });
     });
-  }
-
-  Future<void> scanQRCode() async {
-    try {
-      final qrCode = await FlutterBarcodeScanner.scanBarcode(
-        '#ff6666',
-        'Cancel',
-        true,
-        ScanMode.QR,
-      );
-
-      if (!mounted) return;
-
-      setState(() {
-        this.qrCode = qrCode;
-      });
-    } on PlatformException {
-      qrCode = 'Failed to get platform version.';
-    }
   }
 }
 
