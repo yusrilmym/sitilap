@@ -32,7 +32,7 @@ class _QRScanPageState extends State<QRScanPage> {
       final response = await http.get(Uri.parse(
           //you have to take the ip address of your computer.
           //because using localhost will cause an error
-          "https://api-silapar.itrsudcibinong.com/list.php"));
+          "https://api-sitilap.itrsudcibinong.com/list.php"));
 
       // if response successful
       if (response.statusCode == 200) {
@@ -78,11 +78,11 @@ class _QRScanPageState extends State<QRScanPage> {
                             if (list
                                 .asMap()
                                 .containsKey(int.parse(qrCode))) ...[
-                              if (qrCode == _get[index]['nomer_apar']) ...[
+                              if (qrCode == _get[index]['nomer_komp']) ...[
                                 Column(
                                   children: [
                                     Text(
-                                      'Kode Tabung $qrCode',
+                                      'Kode pengadaan $qrCode',
                                       style: TextStyle(
                                         fontSize: 28,
                                         fontWeight: FontWeight.bold,
@@ -120,14 +120,16 @@ class _QRScanPageState extends State<QRScanPage> {
                                               Text('${_get[index]['satuan']}')),
                                         ]),
                                         DataRow(cells: [
-                                          DataCell(Text('PENGISIAN AWAL')),
+                                          DataCell(
+                                              Text('PENGprocessorAN AWAL')),
                                           DataCell(Text(
-                                              '${_get[index]['pengisian_awal']}')),
+                                              '${_get[index]['pengprocessoran_awal']}')),
                                         ]),
                                         DataRow(cells: [
-                                          DataCell(Text('PENGISIAN AKHIR')),
+                                          DataCell(
+                                              Text('PENGprocessorAN AKHIR')),
                                           DataCell(Text(
-                                              '${_get[index]['pengisian_akhir']}')),
+                                              '${_get[index]['pengprocessoran_akhir']}')),
                                         ]),
                                       ],
                                     ),

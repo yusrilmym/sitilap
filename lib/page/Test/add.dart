@@ -15,25 +15,25 @@ class Add extends StatefulWidget {
 class _AddState extends State<Add> {
   final _formKey = GlobalKey<FormState>();
 
-  //inisialize field
-  var nomer_apar = TextEditingController();
+  //inprocessoralize field
+  var nomer_komp = TextEditingController();
   var nama_ruangan = TextEditingController();
   var jenis_apar = TextEditingController();
   var satuan = TextEditingController();
-  var pengisian_awal = TextEditingController();
-  var pengisian_akhir = TextEditingController();
+  var pengprocessoran_awal = TextEditingController();
+  var pengprocessoran_akhir = TextEditingController();
 
   Future _onSubmit() async {
     try {
       return await http.post(
-        Uri.parse("https://api-silapar.itrsudcibinong.com/create.php"),
+        Uri.parse("https://api-sitilap.itrsudcibinong.com/create.php"),
         body: {
-          "nomer_apar": nomer_apar.text,
+          "nomer_komp": nomer_komp.text,
           "nama_ruangan": nama_ruangan.text,
           "jenis_apar": jenis_apar.text,
           "satuan": satuan.text,
-          "pengisian_awal": pengisian_awal.text,
-          "pengisian_akhir": pengisian_akhir.text,
+          "pengprocessoran_awal": pengprocessoran_awal.text,
+          "pengprocessoran_akhir": pengprocessoran_akhir.text,
         },
       ).then((value) {
         //print message after insert to database
@@ -65,7 +65,7 @@ class _AddState extends State<Add> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'nomer_apar',
+                  'nomer_komp',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -73,7 +73,7 @@ class _AddState extends State<Add> {
                   ),
                 ),
                 TextFormField(
-                  controller: nomer_apar,
+                  controller: nomer_komp,
                   decoration: InputDecoration(
                       hintText: "Nomer Apar",
                       border: OutlineInputBorder(
@@ -87,7 +87,7 @@ class _AddState extends State<Add> {
                   ),
                   validator: (value) {
                     if (value.isEmpty) {
-                      return 'Note nomer_apar is Required!';
+                      return 'Note nomer_komp is Required!';
                     }
                     return null;
                   },
@@ -165,7 +165,7 @@ class _AddState extends State<Add> {
                   ),
                 ),
                 Text(
-                  'pengisian_awal',
+                  'pengprocessoran_awal',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -173,9 +173,9 @@ class _AddState extends State<Add> {
                   ),
                 ),
                 TextFormField(
-                  controller: pengisian_awal,
+                  controller: pengprocessoran_awal,
                   decoration: InputDecoration(
-                      hintText: "Tanggal Pengisian Awal",
+                      hintText: "Tanggal Pengprocessoran Awal",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
@@ -187,7 +187,7 @@ class _AddState extends State<Add> {
                   ),
                 ),
                 Text(
-                  'pengisian_akhir',
+                  'pengprocessoran_akhir',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -195,9 +195,9 @@ class _AddState extends State<Add> {
                   ),
                 ),
                 TextFormField(
-                  controller: pengisian_akhir,
+                  controller: pengprocessoran_akhir,
                   decoration: InputDecoration(
-                      hintText: "Tanggal Pengisian Akhir",
+                      hintText: "Tanggal Pengprocessoran Akhir",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),

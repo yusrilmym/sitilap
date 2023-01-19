@@ -17,13 +17,13 @@ class Edit extends StatefulWidget {
 class _EditState extends State<Edit> {
   final _formKey = GlobalKey<FormState>();
 
-  //inisialize field
-  var nomer_apar = TextEditingController();
+  //inprocessoralize field
+  var nomer_komp = TextEditingController();
   var nama_ruangan = TextEditingController();
   var jenis_apar = TextEditingController();
   var satuan = TextEditingController();
-  var pengisian_awal = TextEditingController();
-  var pengisian_akhir = TextEditingController();
+  var pengprocessoran_awal = TextEditingController();
+  var pengprocessoran_akhir = TextEditingController();
 
   @override
   void initState() {
@@ -39,20 +39,21 @@ class _EditState extends State<Edit> {
           //you have to take the ip address of your computer.
           //because using localhost will cause an error
           //get detail data with id
-          "https://api-silapar.itrsudcibinong.com/detail.php?id='${widget.id}'"));
+          "https://api-sitilap.itrsudcibinong.com/detail.php?id='${widget.id}'"));
 
       // if response successful
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
 
         setState(() {
-          nomer_apar = TextEditingController(text: data['nomer_apar']);
+          nomer_komp = TextEditingController(text: data['nomer_komp']);
           nama_ruangan = TextEditingController(text: data['nama_ruangan']);
           jenis_apar = TextEditingController(text: data['jenis_apar']);
           satuan = TextEditingController(text: data['satuan']);
-          pengisian_awal = TextEditingController(text: data['pengisian_awal']);
-          pengisian_akhir =
-              TextEditingController(text: data['pengisian_akhir']);
+          pengprocessoran_awal =
+              TextEditingController(text: data['pengprocessoran_awal']);
+          pengprocessoran_akhir =
+              TextEditingController(text: data['pengprocessoran_akhir']);
         });
       }
     } catch (e) {
@@ -63,15 +64,15 @@ class _EditState extends State<Edit> {
   Future _onUpdate(context) async {
     try {
       return await http.post(
-        Uri.parse("https://api-silapar.itrsudcibinong.com/update.php"),
+        Uri.parse("https://api-sitilap.itrsudcibinong.com/update.php"),
         body: {
           "id": widget.id,
-          "nomer_apar": nomer_apar.text,
+          "nomer_komp": nomer_komp.text,
           "nama_ruangan": nama_ruangan.text,
           "jenis_apar": jenis_apar.text,
           "satuan": satuan.text,
-          "pengisian_awal": pengisian_awal.text,
-          "pengisian_akhir": pengisian_akhir.text,
+          "pengprocessoran_awal": pengprocessoran_awal.text,
+          "pengprocessoran_akhir": pengprocessoran_akhir.text,
         },
       ).then((value) {
         //print message after insert to database
@@ -90,7 +91,7 @@ class _EditState extends State<Edit> {
   Future _onDelete(context) async {
     try {
       return await http.post(
-        Uri.parse("https://api-silapar.itrsudcibinong.com/delete.php"),
+        Uri.parse("https://api-sitilap.itrsudcibinong.com/delete.php"),
         body: {
           "id": widget.id,
         },
@@ -154,7 +155,7 @@ class _EditState extends State<Edit> {
               // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'nomer_apar',
+                  'nomer_komp',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -162,7 +163,7 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 TextFormField(
-                  controller: nomer_apar,
+                  controller: nomer_komp,
                   decoration: InputDecoration(
                       hintText: "Nomer Apar",
                       border: OutlineInputBorder(
@@ -176,7 +177,7 @@ class _EditState extends State<Edit> {
                   ),
                   validator: (value) {
                     if (value.isEmpty) {
-                      return 'Note nomer_apar is Required!';
+                      return 'Note nomer_komp is Required!';
                     }
                     return null;
                   },
@@ -254,7 +255,7 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 Text(
-                  'pengisian_awal',
+                  'pengprocessoran_awal',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -262,9 +263,9 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 TextFormField(
-                  controller: pengisian_awal,
+                  controller: pengprocessoran_awal,
                   decoration: InputDecoration(
-                      hintText: "Tanggal Pengisian Awal",
+                      hintText: "Tanggal Pengprocessoran Awal",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
@@ -276,7 +277,7 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 Text(
-                  'pengisian_akhir',
+                  'pengprocessoran_akhir',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -284,9 +285,9 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 TextFormField(
-                  controller: pengisian_akhir,
+                  controller: pengprocessoran_akhir,
                   decoration: InputDecoration(
-                      hintText: "Tanggal Pengisian Akhir",
+                      hintText: "Tanggal Pengprocessoran Akhir",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),

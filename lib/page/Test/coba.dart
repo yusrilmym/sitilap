@@ -40,7 +40,7 @@ class CobaState extends State<Coba> {
       final response = await http.get(Uri.parse(
           //you have to take the ip address of your computer.
           //because using localhost will cause an error
-          "https://api-silapar.itrsudcibinong.com/list.php"));
+          "https://api-sitilap.itrsudcibinong.com/list.php"));
 
       // if response successful
       if (response.statusCode == 200) {
@@ -61,7 +61,7 @@ class CobaState extends State<Coba> {
     return Scaffold(
       backgroundColor: Colors.blueGrey,
       appBar: AppBar(
-        title: Text('List APAR'),
+        title: Text('List Komputer'),
         backgroundColor: Colors.green,
       ),
 
@@ -97,7 +97,7 @@ class CobaState extends State<Coba> {
                         children: [
                           Center(
                             child: Text(
-                              '${_get[index]['nomer_apar']}',
+                              '${_get[index]['nomer_komp']}',
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 23,
@@ -115,7 +115,7 @@ class CobaState extends State<Coba> {
                           ),
                           SizedBox(height: 10),
                           Text(
-                            '${_get[index]['jenis_apar']}',
+                            '${_get[index]['jenis_komp']}',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 20,
@@ -124,7 +124,7 @@ class CobaState extends State<Coba> {
                           ),
                           SizedBox(height: 10),
                           Text(
-                            '${_get[index]['satuan']} Kg',
+                            '${_get[index]['merk_komp']}',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 20,

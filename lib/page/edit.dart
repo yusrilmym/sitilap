@@ -17,17 +17,17 @@ class Edit extends StatefulWidget {
 class _EditState extends State<Edit> {
   final _formKey = GlobalKey<FormState>();
 
-  //inisialize field
-  var nomer_apar = TextEditingController();
-  var isi = TextEditingController();
-  var safety = TextEditingController();
-  var corong = TextEditingController();
-  var segel = TextEditingController();
-  var tekanan = TextEditingController();
-  var tabung = TextEditingController();
-  var selang = TextEditingController();
-  var katub = TextEditingController();
-  var tglBulan = TextEditingController();
+  //inprocessoralize field
+  var nomer_komp = TextEditingController();
+  var processor = TextEditingController();
+  var ram = TextEditingController();
+  var hdd = TextEditingController();
+  var vga = TextEditingController();
+  var psu = TextEditingController();
+  var pengadaan = TextEditingController();
+  var pic = TextEditingController();
+  var maintenance = TextEditingController();
+  var tgl_pasang = TextEditingController();
 
   @override
   void initState() {
@@ -43,23 +43,23 @@ class _EditState extends State<Edit> {
           //you have to take the ip address of your computer.
           //because using localhost will cause an error
           //get detail data with id
-          "https://api-silapar.itrsudcibinong.com/detail.php?id='${widget.id}'"));
+          "https://api-sitilap.itrsudcibinong.com/detail.php?id='${widget.id}'"));
 
       // if response successful
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
 
         setState(() {
-          nomer_apar = TextEditingController(text: data['nomer_apar']);
-          isi = TextEditingController(text: data['isi']);
-          safety = TextEditingController(text: data['safety']);
-          corong = TextEditingController(text: data['corong']);
-          segel = TextEditingController(text: data['segel']);
-          tekanan = TextEditingController(text: data['tekanan']);
-          tabung = TextEditingController(text: data['tabung']);
-          selang = TextEditingController(text: data['selang']);
-          katub = TextEditingController(text: data['katub']);
-          tglBulan = TextEditingController(text: data['tglBulan']);
+          nomer_komp = TextEditingController(text: data['nomer_komp']);
+          processor = TextEditingController(text: data['processor']);
+          ram = TextEditingController(text: data['ram']);
+          hdd = TextEditingController(text: data['hdd']);
+          vga = TextEditingController(text: data['vga']);
+          psu = TextEditingController(text: data['psu']);
+          pengadaan = TextEditingController(text: data['pengadaan']);
+          pic = TextEditingController(text: data['pic']);
+          maintenance = TextEditingController(text: data['maintenance']);
+          tgl_pasang = TextEditingController(text: data['tgl_pasang']);
         });
       }
     } catch (e) {
@@ -70,19 +70,19 @@ class _EditState extends State<Edit> {
   Future _onUpdate(context) async {
     try {
       return await http.post(
-        Uri.parse("https://api-silapar.itrsudcibinong.com/update.php"),
+        Uri.parse("https://api-sitilap.itrsudcibinong.com/update.php"),
         body: {
           "id": widget.id,
-          "nomer_apar": nomer_apar.text,
-          "isi": isi.text,
-          "safety": safety.text,
-          "corong": corong.text,
-          "segel": segel.text,
-          "tekanan": tekanan.text,
-          "tabung": tabung.text,
-          "selang": selang.text,
-          "katub": katub.text,
-          "tglBulan": tglBulan.text,
+          "nomer_komp": nomer_komp.text,
+          "processor": processor.text,
+          "ram": ram.text,
+          "hdd": hdd.text,
+          "vga": vga.text,
+          "psu": psu.text,
+          "pengadaan": pengadaan.text,
+          "pic": pic.text,
+          "maintenance": maintenance.text,
+          "tgl_pasang": tgl_pasang.text,
         },
       ).then((value) {
         //print message after insert to database
@@ -101,7 +101,7 @@ class _EditState extends State<Edit> {
   Future _onDelete(context) async {
     try {
       return await http.post(
-        Uri.parse("https://api-silapar.itrsudcibinong.com/delete.php"),
+        Uri.parse("https://api-sitilap.itrsudcibinong.com/delete.php"),
         body: {
           "id": widget.id,
         },
@@ -124,7 +124,7 @@ class _EditState extends State<Edit> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Input Isian"),
+        title: Text("Input processoran"),
         backgroundColor: Colors.green,
         // ignore: prefer_const_literals_to_create_immutables
         actions: [
@@ -165,7 +165,7 @@ class _EditState extends State<Edit> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'isi',
+                  'processor',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -173,9 +173,9 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 TextFormField(
-                  controller: isi,
+                  controller: processor,
                   decoration: InputDecoration(
-                      hintText: "Isi",
+                      hintText: "processor",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
@@ -187,7 +187,7 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 Text(
-                  'safety',
+                  'ram',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -195,9 +195,9 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 TextFormField(
-                  controller: safety,
+                  controller: ram,
                   decoration: InputDecoration(
-                      hintText: "Safety",
+                      hintText: "ram",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
@@ -209,7 +209,7 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 Text(
-                  'corong',
+                  'hdd',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -217,9 +217,9 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 TextFormField(
-                  controller: corong,
+                  controller: hdd,
                   decoration: InputDecoration(
-                      hintText: "Corong",
+                      hintText: "hdd",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
@@ -231,7 +231,7 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 Text(
-                  'segel',
+                  'vga',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -239,9 +239,9 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 TextFormField(
-                  controller: segel,
+                  controller: vga,
                   decoration: InputDecoration(
-                      hintText: "Segel",
+                      hintText: "vga",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
@@ -253,7 +253,7 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 Text(
-                  'tekanan',
+                  'psu',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -261,9 +261,9 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 TextFormField(
-                  controller: tekanan,
+                  controller: psu,
                   decoration: InputDecoration(
-                      hintText: "Tekanan",
+                      hintText: "psu",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
@@ -275,7 +275,7 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 Text(
-                  'tabung',
+                  'pengadaan',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -283,9 +283,9 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 TextFormField(
-                  controller: tabung,
+                  controller: pengadaan,
                   decoration: InputDecoration(
-                      hintText: "Tabung",
+                      hintText: "pengadaan",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
@@ -297,7 +297,7 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 Text(
-                  'selang',
+                  'pic',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -305,9 +305,9 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 TextFormField(
-                  controller: selang,
+                  controller: pic,
                   decoration: InputDecoration(
-                      hintText: "Selang",
+                      hintText: "pic",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
@@ -319,7 +319,7 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 Text(
-                  'katub',
+                  'maintenance',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -327,9 +327,9 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 TextFormField(
-                  controller: katub,
+                  controller: maintenance,
                   decoration: InputDecoration(
-                      hintText: "Katub",
+                      hintText: "maintenance",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
@@ -341,7 +341,7 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 Text(
-                  'tglBulan',
+                  'tgl_pasang',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -349,7 +349,7 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 TextFormField(
-                  controller: tglBulan,
+                  controller: tgl_pasang,
                   decoration: InputDecoration(
                     labelText: "Tanggal Bulan",
                     hintText: "input Tanggal Bulan",
@@ -363,7 +363,7 @@ class _EditState extends State<Edit> {
                         firstDate: DateTime(1900),
                         lastDate: DateTime(2100));
 
-                    tglBulan.text = date.toIso8601String();
+                    tgl_pasang.text = date.toIso8601String();
                   },
                 ),
                 ElevatedButton(

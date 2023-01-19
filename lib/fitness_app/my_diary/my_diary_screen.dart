@@ -1,5 +1,10 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:qr_code_scanner/fitness_app/my_diary/water_view.dart';
+import 'package:qr_code_scanner/widget/button_widget.dart';
 
 import '../fitness_app_theme.dart';
 import '../ui_view/body_measurement.dart';
@@ -91,7 +96,6 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
         animationController: widget.animationController,
       ),
     );
-
     listViews.add(
       BodyMeasurementView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
@@ -123,9 +127,10 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     //     animationController: widget.animationController,
     //   ),
     // );
+
     listViews.add(
       TitleView(
-        titleTxt: 'Isi Tabung',
+        titleTxt: 'processor pengadaan',
         subTxt: 'Otomatis',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,

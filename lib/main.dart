@@ -9,6 +9,7 @@ import 'package:qr_code_scanner/page/qr_scan_pagecopy.dart';
 import 'package:qr_code_scanner/widget/button_widget.dart';
 
 import 'fitness_app/fitness_app_home_screen.dart';
+import 'fitness_app/training/training_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  static final String title = 'QR PEMELIHARAAN APAR';
+  static final String title = 'QR PEMELIHARAAN IT Aset';
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -62,7 +63,7 @@ class _MainPageState extends State<MainPage> {
             children: [
               const SizedBox(height: 100),
               Image.asset(
-                'assets/k3rs.png',
+                'assets/IT.png',
                 height: 150,
                 width: 280,
                 fit: BoxFit.cover,
@@ -76,9 +77,9 @@ class _MainPageState extends State<MainPage> {
               ),
               const SizedBox(height: 32),
               ButtonWidget(
-                text: 'Scan QR Code',
+                text: 'Scan Data',
                 onClicked: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => QRScanPage(),
+                  builder: (BuildContext context) => QRScanPageCop(),
                 )),
               ),
               const SizedBox(height: 32),
@@ -86,13 +87,6 @@ class _MainPageState extends State<MainPage> {
                 text: 'LIST DATA',
                 onClicked: () => Navigator.of(context).push(MaterialPageRoute(
                   builder: (BuildContext context) => Coba(),
-                )),
-              ),
-              const SizedBox(height: 32),
-              ButtonWidget(
-                text: 'TES Scan',
-                onClicked: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => QRScanPageCop(),
                 )),
               ),
               const SizedBox(height: 32),

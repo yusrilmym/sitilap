@@ -31,7 +31,7 @@ class _QRScanPageCopState extends State<QRScanPageCop> {
       final response = await http.get(Uri.parse(
           //you have to take the ip address of your computer.
           //because using localhost will cause an error
-          "https://api-silapar.itrsudcibinong.com/list.php"));
+          "https://api-sitilap.itrsudcibinong.com/list.php"));
 
       // if response successful
       if (response.statusCode == 200) {
@@ -62,11 +62,11 @@ class _QRScanPageCopState extends State<QRScanPageCop> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     if (list.asMap().containsKey(int.parse(qrCode))) ...[
-                      if (qrCode == _get[index]['nomer_apar']) ...[
+                      if (qrCode == _get[index]['nomer_komp']) ...[
                         Column(
                           children: [
                             Text(
-                              'Kode Tabung $qrCode',
+                              'Kode ASET $qrCode',
                               style: TextStyle(
                                 fontSize: 28,
                                 fontWeight: FontWeight.bold,
@@ -92,23 +92,22 @@ class _QRScanPageCopState extends State<QRScanPageCop> {
                                       Text('${_get[index]['nama_ruangan']}')),
                                 ]),
                                 DataRow(cells: [
-                                  DataCell(Text('JENIS APAR')),
+                                  DataCell(Text('JENIS KOMPUTER')),
                                   DataCell(
-                                      Text('${_get[index]['jenis_apar']}')),
+                                      Text('${_get[index]['jenis_komp']}')),
                                 ]),
                                 DataRow(cells: [
-                                  DataCell(Text('SATUAN (KG)')),
-                                  DataCell(Text('${_get[index]['satuan']}')),
+                                  DataCell(Text('Merek')),
+                                  DataCell(Text('${_get[index]['merk_komp']}')),
                                 ]),
                                 DataRow(cells: [
-                                  DataCell(Text('PENGISIAN AWAL')),
+                                  DataCell(Text('Nomer Seri')),
                                   DataCell(
-                                      Text('${_get[index]['pengisian_awal']}')),
+                                      Text('${_get[index]['nomer_seri']}')),
                                 ]),
                                 DataRow(cells: [
-                                  DataCell(Text('PENGISIAN AKHIR')),
-                                  DataCell(Text(
-                                      '${_get[index]['pengisian_akhir']}')),
+                                  DataCell(Text('Model')),
+                                  DataCell(Text('${_get[index]['model']}')),
                                 ]),
                               ],
                             ),
