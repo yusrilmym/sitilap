@@ -15,8 +15,8 @@ class QRScanPageCop extends StatefulWidget {
 }
 
 class _QRScanPageCopState extends State<QRScanPageCop> {
-  var list = [for (var i = 0; i < 250; i += 1) i];
-  var qrCode = '201';
+  var list = [for (var i = 0; i < 101011; i += 1) i];
+  var qrCode = '101010';
   List _get = [];
 
   @override
@@ -58,68 +58,79 @@ class _QRScanPageCopState extends State<QRScanPageCop> {
           child: ListView.builder(
               itemCount: _get == null ? 0 : _get.length,
               itemBuilder: (BuildContext context, index) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    if (list.asMap().containsKey(int.parse(qrCode))) ...[
-                      if (qrCode == _get[index]['nomer_komp']) ...[
-                        Column(
-                          children: [
-                            Text(
-                              'Kode ASET $qrCode',
-                              style: TextStyle(
-                                fontSize: 28,
-                                fontWeight: FontWeight.bold,
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Edit(
+                                  id: _get[index]['id'],
+                                )));
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      if (list.asMap().containsKey(int.parse(qrCode))) ...[
+                        if (qrCode == _get[index]['nomer_komp']) ...[
+                          Column(
+                            children: [
+                              Text(
+                                'Kode ASET $qrCode',
+                                style: TextStyle(
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            DataTable(
-                              columns: [
-                                DataColumn(
-                                    label: Text('Keterangan',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold))),
-                                DataColumn(
-                                    label: Text('Detail',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold))),
-                              ],
-                              rows: [
-                                DataRow(cells: [
-                                  DataCell(Text('NAMA RUANGAN')),
-                                  DataCell(
-                                      Text('${_get[index]['nama_ruangan']}')),
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Text('JENIS KOMPUTER')),
-                                  DataCell(
-                                      Text('${_get[index]['jenis_komp']}')),
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Text('Merek')),
-                                  DataCell(Text('${_get[index]['merk_komp']}')),
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Text('Nomer Seri')),
-                                  DataCell(
-                                      Text('${_get[index]['nomer_seri']}')),
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Text('Model')),
-                                  DataCell(Text('${_get[index]['model']}')),
-                                ]),
-                              ],
-                            ),
-                            ButtonWidget(
-                              text: 'Start QR scan',
-                              onClicked: () => scanQRCode(),
-                            ),
-                          ],
-                        ),
+                              DataTable(
+                                columns: [
+                                  DataColumn(
+                                      label: Text('Keterangan',
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold))),
+                                  DataColumn(
+                                      label: Text('Detail',
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold))),
+                                ],
+                                rows: [
+                                  DataRow(cells: [
+                                    DataCell(Text('NAMA RUANGAN')),
+                                    DataCell(
+                                        Text('${_get[index]['nama_ruangan']}')),
+                                  ]),
+                                  DataRow(cells: [
+                                    DataCell(Text('JENIS KOMPUTER')),
+                                    DataCell(
+                                        Text('${_get[index]['jenis_komp']}')),
+                                  ]),
+                                  DataRow(cells: [
+                                    DataCell(Text('Merek')),
+                                    DataCell(
+                                        Text('${_get[index]['merk_komp']}')),
+                                  ]),
+                                  DataRow(cells: [
+                                    DataCell(Text('Nomer Seri')),
+                                    DataCell(
+                                        Text('${_get[index]['nomer_seri']}')),
+                                  ]),
+                                  DataRow(cells: [
+                                    DataCell(Text('Model')),
+                                    DataCell(Text('${_get[index]['model']}')),
+                                  ]),
+                                ],
+                              ),
+                              ButtonWidget(
+                                text: 'Start QR scan',
+                                onClicked: () => scanQRCode(),
+                              ),
+                            ],
+                          ),
+                        ],
                       ],
                     ],
-                  ],
+                  ),
                 );
               }),
         ),
