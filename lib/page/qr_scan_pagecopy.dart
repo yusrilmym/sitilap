@@ -16,7 +16,7 @@ class QRScanPageCop extends StatefulWidget {
 
 class _QRScanPageCopState extends State<QRScanPageCop> {
   var list = [for (var i = 0; i < 250; i += 1) i];
-  var qrCode = '4';
+  var qrCode = '201';
   List _get = [];
 
   @override

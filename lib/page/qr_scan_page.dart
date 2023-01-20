@@ -110,26 +110,26 @@ class _QRScanPageState extends State<QRScanPage> {
                                               '${_get[index]['nama_ruangan']}')),
                                         ]),
                                         DataRow(cells: [
-                                          DataCell(Text('JENIS APAR')),
+                                          DataCell(Text('JENIS KOMPUTER')),
                                           DataCell(Text(
-                                              '${_get[index]['jenis_apar']}')),
+                                              '${_get[index]['jenis_komp']}')),
                                         ]),
                                         DataRow(cells: [
-                                          DataCell(Text('SATUAN (KG)')),
-                                          DataCell(
-                                              Text('${_get[index]['satuan']}')),
+                                          DataCell(Text('merk_komp')),
+                                          DataCell(Text(
+                                              '${_get[index]['merk_komp']}')),
                                         ]),
                                         DataRow(cells: [
                                           DataCell(
                                               Text('PENGprocessorAN AWAL')),
                                           DataCell(Text(
-                                              '${_get[index]['pengprocessoran_awal']}')),
+                                              '${_get[index]['nomer_seri']}')),
                                         ]),
                                         DataRow(cells: [
                                           DataCell(
                                               Text('PENGprocessorAN AKHIR')),
-                                          DataCell(Text(
-                                              '${_get[index]['pengprocessoran_akhir']}')),
+                                          DataCell(
+                                              Text('${_get[index]['model']}')),
                                         ]),
                                       ],
                                     ),

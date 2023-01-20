@@ -20,10 +20,10 @@ class _EditState extends State<Edit> {
   //inprocessoralize field
   var nomer_komp = TextEditingController();
   var nama_ruangan = TextEditingController();
-  var jenis_apar = TextEditingController();
-  var satuan = TextEditingController();
-  var pengprocessoran_awal = TextEditingController();
-  var pengprocessoran_akhir = TextEditingController();
+  var jenis_komp = TextEditingController();
+  var merk_komp = TextEditingController();
+  var nomer_seri = TextEditingController();
+  var model = TextEditingController();
 
   @override
   void initState() {
@@ -48,12 +48,10 @@ class _EditState extends State<Edit> {
         setState(() {
           nomer_komp = TextEditingController(text: data['nomer_komp']);
           nama_ruangan = TextEditingController(text: data['nama_ruangan']);
-          jenis_apar = TextEditingController(text: data['jenis_apar']);
-          satuan = TextEditingController(text: data['satuan']);
-          pengprocessoran_awal =
-              TextEditingController(text: data['pengprocessoran_awal']);
-          pengprocessoran_akhir =
-              TextEditingController(text: data['pengprocessoran_akhir']);
+          jenis_komp = TextEditingController(text: data['jenis_komp']);
+          merk_komp = TextEditingController(text: data['merk_komp']);
+          nomer_seri = TextEditingController(text: data['nomer_seri']);
+          model = TextEditingController(text: data['model']);
         });
       }
     } catch (e) {
@@ -69,10 +67,10 @@ class _EditState extends State<Edit> {
           "id": widget.id,
           "nomer_komp": nomer_komp.text,
           "nama_ruangan": nama_ruangan.text,
-          "jenis_apar": jenis_apar.text,
-          "satuan": satuan.text,
-          "pengprocessoran_awal": pengprocessoran_awal.text,
-          "pengprocessoran_akhir": pengprocessoran_akhir.text,
+          "jenis_komp": jenis_komp.text,
+          "merk_komp": merk_komp.text,
+          "nomer_seri": nomer_seri.text,
+          "model": model.text,
         },
       ).then((value) {
         //print message after insert to database
@@ -114,7 +112,7 @@ class _EditState extends State<Edit> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Input APAR"),
+        title: Text("Input komputer"),
         backgroundColor: Colors.green,
         // ignore: prefer_const_literals_to_create_immutables
         actions: [
@@ -211,7 +209,7 @@ class _EditState extends State<Edit> {
                   },
                 ),
                 Text(
-                  'jenis_apar',
+                  'jenis_komp',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -219,9 +217,9 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 TextFormField(
-                  controller: jenis_apar,
+                  controller: jenis_komp,
                   decoration: InputDecoration(
-                      hintText: "Jenis Apar",
+                      hintText: "Jenis Komputer",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
@@ -233,7 +231,7 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 Text(
-                  'satuan',
+                  'merk_komp',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -241,9 +239,9 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 TextFormField(
-                  controller: satuan,
+                  controller: merk_komp,
                   decoration: InputDecoration(
-                      hintText: "Satuan(KG)",
+                      hintText: "Merek Komputer",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
@@ -255,7 +253,7 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 Text(
-                  'pengprocessoran_awal',
+                  'nomer_seri',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -263,9 +261,9 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 TextFormField(
-                  controller: pengprocessoran_awal,
+                  controller: nomer_seri,
                   decoration: InputDecoration(
-                      hintText: "Tanggal Pengprocessoran Awal",
+                      hintText: "Nomer Seri",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
@@ -277,7 +275,7 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 Text(
-                  'pengprocessoran_akhir',
+                  'model',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -285,9 +283,9 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 TextFormField(
-                  controller: pengprocessoran_akhir,
+                  controller: model,
                   decoration: InputDecoration(
-                      hintText: "Tanggal Pengprocessoran Akhir",
+                      hintText: "Model",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
